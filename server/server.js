@@ -1,7 +1,7 @@
-import express from "express"
+import express, { application } from "express"
 import cors from "cors"
 import "dotenv/config"
-import { clerkMiddleware } from '@clerk/express'
+import { clerkMiddleware, requireAuth } from '@clerk/express'
 
 const app = express()
 
@@ -13,6 +13,8 @@ app.use(clerkMiddleware())
 app.get("/", (req, res) => {
   res.send("Server is Live!")
 })
+
+app.use(requireAuth())
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
