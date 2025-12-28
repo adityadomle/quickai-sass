@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import type { Project } from "../types"
-import { ArrowBigDownDashIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from "lucide-react"
+import { ArrowBigDownDashIcon, EyeIcon, EyeOffIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from "lucide-react"
 import { dummyConversations, dummyProjects } from "../assets/assets"
 
 const Projects = () => {
@@ -117,9 +117,19 @@ const Projects = () => {
   <FullscreenIcon size={16} /> Preview
 </Link>
 
-<button>
+<button className="bg-linear-to-br from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors">
   <ArrowBigDownDashIcon size={16} /> Download
 </button>
+
+<button>
+  {project.isPublished ? (
+    <EyeOffIcon size={16} />
+  ) : (
+    <EyeIcon size={16} />
+  )}
+  {project.isPublished ? "Unpublish" : "Publish"}
+</button>
+
 
         </div>
       </div>
