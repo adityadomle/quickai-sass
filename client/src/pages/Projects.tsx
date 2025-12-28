@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import type { Project } from "../types"
-import { Loader2Icon, MessageSquareIcon, XIcon } from "lucide-react"
+import { Loader2Icon, MessageSquareIcon, SmartphoneIcon, XIcon } from "lucide-react"
 import { dummyConversations, dummyProjects } from "../assets/assets"
 
 const Projects = () => {
@@ -77,7 +77,9 @@ const Projects = () => {
         </div>
 
         {/* middle */}
-        <div></div>
+        <div>
+          <SmartphoneIcon />
+        </div>
 
         {/* right */}
         <div></div>
