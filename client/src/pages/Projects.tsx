@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import type { Project } from "../types"
-import { Loader2Icon, MessageSquareIcon, SmartphoneIcon, XIcon } from "lucide-react"
+import { ArrowBigDownDashIcon, FullscreenIcon, LaptopIcon, Loader2Icon, MessageSquareIcon, SaveIcon, SmartphoneIcon, TabletIcon, XIcon } from "lucide-react"
 import { dummyConversations, dummyProjects } from "../assets/assets"
 
 const Projects = () => {
@@ -77,12 +77,51 @@ const Projects = () => {
         </div>
 
         {/* middle */}
-        <div>
-          <SmartphoneIcon />
-        </div>
+      <div className="hidden sm:flex gap-2 bg-gray-950 p-1.5 rounded-md">
+  <SmartphoneIcon
+    onClick={() => setDevice("phone")}
+    className={`size-6 p-1 rounded cursor-pointer ${
+      device === "phone" ? "bg-gray-700" : ""
+    }`}
+  />
+  <TabletIcon
+    onClick={() => setDevice("tablet")}
+    className={`size-6 p-1 rounded cursor-pointer ${
+      device === "tablet" ? "bg-gray-700" : ""
+    }`}
+  />
+  <LaptopIcon
+    onClick={() => setDevice("desktop")}
+    className={`size-6 p-1 rounded cursor-pointer ${
+      device === "desktop" ? "bg-gray-700" : ""
+    }`}
+  />
+</div>
+
 
         {/* right */}
-        <div></div>
+        <div className="flex items-center justify-end gap-3 flex-1 text-xs sm:text-sm">
+          <button
+  disabled={isSaving}
+  className="max-sm:hidden bg-gray-800 hover:bg-gray-700 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors border border-gray-700"
+>
+  {isSaving ? (
+    <Loader2Icon className="animate-spin" size={16} />
+  ) : (
+    <SaveIcon size={16} />
+  )}
+  Save
+</button>
+
+<Link target="_blank" to={`/preview/${projectId}`} className="flex items-center gap-2 px-4 py-1 rounded sm:rounded-sm border border-gray-700 hover:border-gray-500 transition-colors">
+  <FullscreenIcon size={16} /> Preview
+</Link>
+
+<button>
+  <ArrowBigDownDashIcon size={16} /> Download
+</button>
+
+        </div>
       </div>
     </div>
   ) : (
