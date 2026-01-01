@@ -10,7 +10,7 @@ import View from './pages/View'
 import Navbar from './components/Navbar.tsx'
 
 const App = () => {
-  return (
+  return ( 
     <div>
       <Navbar />
       <Routes>
